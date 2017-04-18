@@ -11,6 +11,8 @@ describe('server', function() {
 
   it('should send back parsable stringified JSON', function(done) {
     request('http://127.0.0.1:3000/classes/messages', function(error, response, body) {
+      // console.log("this is body:", body)
+      // console.log("this is type of body:", typeof(body))
       expect(JSON.parse.bind(this, body)).to.not.throw();
       done();
     });
@@ -64,7 +66,9 @@ describe('server', function() {
         done();
       });
     });
+
   });
+
 
   it('Should 404 when asked for a nonexistent endpoint', function(done) {
     request('http://127.0.0.1:3000/arglebargle', function(error, response, body) {
